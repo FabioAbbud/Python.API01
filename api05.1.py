@@ -12,7 +12,7 @@ database = './temp_db.db'
 
 def get_all_items():
     try:
-        # Conectar ao banco de dados SQLite.
+        # Conectar ao banco de dados SQLite...
         conn = sqlite3.connect(database)
         conn.row_factory = sqlite3.Row
         cursor = conn.cursor()
