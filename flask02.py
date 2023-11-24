@@ -321,7 +321,7 @@ def get_items_by_owner(id):
         return {"error": f"Erro inesperado: {str(e)}"}, 500
 
 # Desafio 2.
-@app.route("/items/<int:item_id>", methods=["GET"])
+@app.route("/items/dados/<int:item_id>", methods=["GET"])
 def get_item_with_owner(item_id):
 
 
