@@ -19,7 +19,7 @@ def prefix_remove(prefix, data):
     # Função que remove os prefixos dos nomes dos campos de um 'dict'.
     # Por exemplo, prefix_remove('item_', { 'item_id': 2, 'item_name': 'Coisa', 'item_status': 'on' })
     # retorna { 'id': 2, 'name': 'Coisa', 'status': 'on' }
-    # Créditos: Comunidade StackOverflow....
+    # Créditos: Comunidade StackOverflow.
 
     new_data = {}
     for key, value in data.items():
