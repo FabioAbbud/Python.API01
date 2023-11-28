@@ -684,7 +684,7 @@ def contact_prefix_remove(prefix, data):
     # Créditos: Comunidade StackOverflow.
 
     new_data = {}
-    for key, value in data.contact():
+    for key, value in data.items():
         if key.startswith(prefix):
             new_key = key[len(prefix):]
             new_data[new_key] = value

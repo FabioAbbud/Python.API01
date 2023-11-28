@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+</head>
+<body>
+    <h2>Rotas para Itens (Items):</h2>
+    <ul>
+        <li><strong>GET</strong> /items: Retorna todos os registros válidos de itens.</li>
+        <li><strong>GET</strong> /items/&lt;int:id&gt;: Retorna um registro único de item identificado pelo <code>id</code>.</li>
+        <li><strong>POST</strong> /items: Cadastra um novo registro de item.</li>
+        <li><strong>DELETE</strong> /items/&lt;int:id&gt;: Marca como apagado um registro único de item identificado pelo <code>id</code>.</li>
+        <li><strong>PUT/PATCH</strong> /items/&lt;int:id&gt;: Edita um registro de item identificado pelo <code>id</code>.</li>
+    </ul>
+    
+    <h2>Rotas para Proprietários (Owners):</h2>
+    <ul>
+        <li><strong>GET</strong> /owner: Retorna todos os registros válidos de proprietários.</li>
+        <li><strong>GET</strong> /owner/&lt;int:id&gt;: Retorna um registro único de proprietário identificado pelo <code>id</code>.</li>
+        <li><strong>POST</strong> /owner: Cadastra um novo registro de proprietário.</li>
+        <li><strong>DELETE</strong> /owner/&lt;int:id&gt;: Marca como apagado um registro único de proprietário identificado pelo <code>id</code>.</li>
+        <li><strong>PUT/PATCH</strong> /owner/&lt;int:id&gt;: Edita um registro de proprietário identificado pelo <code>id</code>.</li>
+        <li><strong>GET</strong> /owner/&lt;int:id&gt;/items: Retorna todos os itens relacionados a um proprietário específico.</li>
+    </ul>
+    
+    <h2>Outras Rotas:</h2>
+    <ul>
+        <li><strong>GET</strong> /items/dados/&lt;int:item_id&gt;: Retorna um item com seus detalhes, incluindo detalhes do proprietário.</li>
+        <li><strong>GET</strong> /item/search/&lt;string:item_name&gt;: Busca itens com base em um nome fornecido.</li>
+        <li><strong>POST</strong> /contact: Cadastra um novo contato.</li>
+    </ul>
+    
+    
+</body>
+</html>
