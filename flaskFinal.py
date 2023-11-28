@@ -673,6 +673,79 @@ def search_items(item_name):
         return {"error": f"Erro inesperado: {str(e)}"}, 500
 
 
+# -------------------------------------------------------------------------------------------------------------
+# Contatos
+
+def contact_prefix_remove(prefix, data):
+
+    # Função que remove os prefixos dos nomes dos campos de um 'dict'.
+    # Por exemplo, prefix_remove('owner_', { 'owner_id': 2, 'owner_name': 'Coisa', 'owner_status': 'on' })
+    # retorna { 'id': 2, 'name': 'Coisa', 'status': 'on' }
+    # Créditos: Comunidade StackOverflow.
+
+    new_data = {}
+    for key, value in data.contact():
+        if key.startswith(prefix):
+            new_key = key[len(prefix):]
+            new_data[new_key] = value
+        else:
+            new_data[key] = value
+    return new_data
+
+@app.route('/contact', methods=["POST"])
+def contact_create():
+
+    # Cadastra um novo registro em 'item'.
+    # Request method → POST
+    # Request endpoint → /items
+    # Request body → JSON (raw) → { String:name, String:description, String:location, int:owner }
+    # Response → JSON → { "success": "Registro criado com sucesso", "id": id do novo registro }}
+
+    try:
+        # Recebe dados do body da requisição na forma de 'dict'.
+        new_contact = request.get_json()
+
+        # Conecta ao banco de dados.
+        # Observe que 'row_factory' é desnecessário porque não receberemos dados do banco de dados.
+        conn = sqlite3.connect(database)
+        cursor = conn.cursor()
+
+        # Query que insere um novo registro na tabela 'item'.
+        sql = "INSERT INTO contact (name, email, subject, message) VALUES (?, ?, ?, ?)"
+
+        # Dados a serem inseridos, obtidos do request.
+        sql_data = (
+            new_contact['name'],
+            new_contact['email'],
+            new_contact['subject'],
+            new_contact['message'],
+        )
+
+        # Executa a query, fazendo as devidas substituições dos curingas (?) pelos dados (sql_data).
+        cursor.execute(sql, sql_data)
+
+        # Obter o ID da última inserção
+        inserted_id = int(cursor.lastrowid)
+
+        # Salvar as alterações no banco de dados.
+        conn.commit()
+
+        # Fecha a conexão com o banco de dados.
+        conn.close()
+
+        # Retorna com mensagem de sucesso e status HTTP "201 Created".
+        return {"success": "Registro criado com sucesso", "id": inserted_id}, 201
+
+    except json.JSONDecodeError as e:  # Erro ao obter dados do JSON.
+        return {"error": f"Erro ao decodificar JSON: {str(e)}"}, 500
+
+    except sqlite3.Error as e:  # Erro ao processar banco de dados.
+        return {"error": f"Erro ao acessar o banco de dados: {str(e)}"}, 500
+
+    except Exception as e:  # Outros erros.
+        return {"error": f"Erro inesperado: {str(e)}"}, 500
+
+
 
 # Roda aplicativo Flask.
 if __name__ == "__main__":

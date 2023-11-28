@@ -2,6 +2,7 @@
 
 DROP TABLE IF EXISTS item;
 DROP TABLE IF EXISTS owner;
+DROP TABLE IF EXISTS contact;
 
 -- Cria a tabela owner.
 
@@ -47,6 +48,16 @@ INSERT INTO item (item_id, item_date, item_name, item_description, item_location
 ('3', '2023-07-05 16:45:22', 'Relógio', 'Relógio de pulso', 'Cômoda', '3', 'on'),
 ('4', '2023-08-15 11:05:17', 'Óculos de Sol', 'Óculos escuros', 'Prateleira', '4', 'on'),
 ('5', '2023-09-02 08:20:30', 'Livro', 'Romance contemporâneo', 'Estante', '5', 'on');
+
+CREATE TABLE contact (
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	date DATETIME DEFAULT CURRENT_TIMESTAMP,
+	name TEXT,
+	email TEXT,
+	subject TEXT,
+	message TEXT,
+	status TEXT DEFAULT 'received'
+);
 
 -- Update tabela item
 
