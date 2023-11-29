@@ -2,11 +2,12 @@
 
 # Importa bibliotecas.
 from flask import Flask, jsonify, request, abort, make_response, json, Response
+from flask_cors import CORS
 import sqlite3
 
 # Cria aplicativo Flask.
 app = Flask(__name__)
-
+CORS(app)
 # Configura o character set das transações HTTP para UTF-8.
 json.provider.DefaultJSONProvider.ensure_ascii = False
 
