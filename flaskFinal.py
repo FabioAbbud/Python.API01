@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 # Importa bibliotecas.
-from flask import Flask, jsonify, request, abort, make_response, json, Response
+from flask import Flask, jsonify, request, abort, make_response, json, Response, render_template
 from flask_cors import CORS
 import sqlite3
 
@@ -31,6 +31,9 @@ def prefix_remove(prefix, data):
             new_data[key] = value
     return new_data
 
+@app.route('/')
+def home():
+    return render_template('index.html')
 
 @app.route("/items", methods=["GET"])
 def get_all():
