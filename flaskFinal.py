@@ -31,7 +31,7 @@ def prefix_remove(prefix, data):
             new_data[key] = value
     return new_data
 
-@app.route('/')
+@app.route('/home')
 def home():
     return render_template('index.html')
 
