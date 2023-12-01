@@ -310,7 +310,7 @@ def owner_prefix_remove(prefix, data):
     return new_data
 
 
-@app.route("/owner", methods=["GET"])
+@app.route("/owners", methods=["GET"])
 def owner_get_all():
 
     # Obtém todos os registros válidos de 'owner'.
@@ -365,7 +365,7 @@ def owner_get_all():
         return {"error": f"Erro inesperado: {str(e)}"}, 500
 
 
-@app.route("/owner/<int:id>", methods=["GET"])
+@app.route("/owners/<int:id>", methods=["GET"])
 def owner_get_one(id):
 
     # Obtém um registro único de 'owner', identificado pelo 'id'.
@@ -411,7 +411,7 @@ def owner_get_one(id):
         return {"error": f"Erro inesperado: {str(e)}"}, 500
 
 
-@app.route('/owner', methods=["POST"])
+@app.route('/owners', methods=["POST"])
 def owner_create():
 
     # Cadastra um novo registro em 'owner'.
@@ -465,7 +465,7 @@ def owner_create():
         return {"error": f"Erro inesperado: {str(e)}"}, 500
 
 
-@app.route("/owner/<int:id>", methods=["DELETE"])
+@app.route("/owners/<int:id>", methods=["DELETE"])
 def owner_delete(id):
 
     # Marca, como apagado, um registro único de 'owner', identificado pelo 'id'.
@@ -523,7 +523,7 @@ def owner_delete(id):
         return {"error": f"Erro inesperado: {str(e)}"}, 500
 
 
-@app.route("/owner/<int:id>", methods=["PUT", "PATCH"])
+@app.route("/owners/<int:id>", methods=["PUT", "PATCH"])
 def owner_edit(id):
 
     # Edita um registro em 'owner', identificado pelo 'id'.
@@ -568,7 +568,7 @@ def owner_edit(id):
 
 
 # Desafio 1.
-@app.route("/owner/<int:id>/items", methods=["GET"])
+@app.route("/owners/<int:id>/items", methods=["GET"])
 def get_items_by_owner(id):
 
     try:
